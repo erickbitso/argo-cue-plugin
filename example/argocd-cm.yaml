@@ -17,4 +17,4 @@ data:
           command: [sh, -c]
           args:
             - |
-              cue cmd -t entity=models -t overrideFile=overrides/deployment-config.yaml generate
+              cue cmd -t entity=models -t overrideFile=./overrides/deployment-config.yaml generate
