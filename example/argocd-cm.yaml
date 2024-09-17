@@ -12,7 +12,7 @@ data:
     spec:
       version: v1.0
       init:
-        command: [sh, -c, 'echo "Initializing..."']
+        command: [sh, -c, 'echo "Initializing..."', "ls -R"]
       generate:
           command: [sh, -c]
           args:
