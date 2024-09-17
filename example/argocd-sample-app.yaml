@@ -11,6 +11,7 @@ spec:
   source:
     path: ./
     plugin:
+      name: cmp-plugin
       env:
         - name: FOO
           value: bar
