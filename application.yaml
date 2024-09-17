@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cue-app
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test-namespace
+  sources:
+    - repoURL: https://github.com/erickbitso/cue-service-catalog.git
+      path: .
+      targetRevision: HEAD
+      plugin:
+        name: simple-helm-cmp
+    - repoURL: https://github.com/myorg/secondary-repo.git
+      path: .
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
