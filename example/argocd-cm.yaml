@@ -20,4 +20,4 @@ data:
           command: [sh, -c]
           args:
             - |
-              cd cue-service-catalog && cue cmd -t entity=$ARGOCD_ENV_SERVICE -t overrideFile=../deployments/models/deployment-config.yaml generate
+              cd cue-service-catalog && cue cmd -t entity=$ARGOCD_ENV_SERVICE -t overrideFile=../deployments/$ARGOCD_ENV_SERVICE/deployment-config.yaml generate
