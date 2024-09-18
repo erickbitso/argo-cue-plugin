@@ -17,7 +17,7 @@ kubectl -n argocd patch deployments/argocd-repo-server --patch-file example/argo
 sleep 20
 echo -e "\033[35mPort forwarding ArgoCD\033[0m"
 kubectl port-forward svc/argocd-server -n argocd 8080:443 >/dev/null 2>&1 &
-sleep 5
+sleep 10
 # Login to ArgoCD
 echo -e "\033[35mLogging in to ArgoCD\033[0m"
 admin_password=$(kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d)

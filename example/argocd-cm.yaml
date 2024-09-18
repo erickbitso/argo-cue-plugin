@@ -15,7 +15,7 @@ data:
         command: ["/bin/sh", "-c"]
         args: 
           - |
-            git clone https://github.com/erickbitso/cue-service-catalog.git
+            git clone --depth 1 --branch main --single-branch https://github.com/erickbitso/cue-service-catalog.git
       generate:
           command: [sh, -c]
           args:
