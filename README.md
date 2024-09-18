@@ -1,13 +1,11 @@
 
-# Install
+# ArgoCD with Cue plugin (PoC)
 
-```
-kubectl apply -k https://github.com/argoproj/argo-cd/manifests/crds\?ref\=stable
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-kubectl create clusterrolebinding argocd-admin-binding \
-  --clusterrole=cluster-admin \
-  --serviceaccount=argocd:argocd-application-controller
-kubectl apply -f example/argocd-cm.yaml
-kubectl -n argocd patch deployments/argocd-repo-server --patch-file example/argocd-repo-server-patch.yaml
-```
+This is a PoC to test an ArgoCD (Cue) plugin that generates manifests based on a transformation and provided override files:
+  - A github repository https://github.com/erickbitso/cue-service-catalog.git where the Cue transformations are hosted.
+  - A github repository https://github.com/erickbitso/service-repo.git where the application overrides are hosted.
+
+## How to run
+
+Execute `./setup.sh`, this will create a Kind cluster and setup ArgoCD with the plugin (running as a sidecar). The plugin image
+installs cue and git packages.

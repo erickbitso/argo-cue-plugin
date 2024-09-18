@@ -7,9 +7,5 @@ RUN apk update && \
     mv cue /usr/local/bin/cue && \
     chmod +x /usr/local/bin/cue
 
-# Set non-root user (since your security context sets non-root user)
-# RUN addgroup -g 999 nonroot && adduser -u 999 -G nonroot -D nonroot
-# USER 999
-
 # Default command
 CMD ["/var/run/argocd/argocd-cmp-server"]
