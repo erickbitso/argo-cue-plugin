@@ -12,9 +12,12 @@ data:
     spec:
       version: v1.0
       init:
-        command: [sh, -c, 'echo "Initializing..."', "ls -R"]
+        command: ["/bin/sh", "-c"]
+        args: 
+          - |
+            git clone https://github.com/erickbitso/cue-service-catalog.git
       generate:
           command: [sh, -c]
           args:
             - |
-              cue cmd -t entity=models -t overrideFile=./overrides/deployment-config.yaml generate
+              cd cue-service-catalog && cue cmd -t entity=$ARGOCD_ENV_SERVICE -t overrideFile=../deployments/models/deployment-config.yaml generate
